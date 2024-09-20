@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.1-fpm
 
 # Necessary dependencies
 RUN apt-get update && pecl install apcu uploadprogress xdebug && apt-get install -y \
