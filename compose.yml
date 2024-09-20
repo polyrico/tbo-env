@@ -1,0 +1,31 @@
+services:
+  php:
+    build: ./docker/php
+    volumes:
+      - /home/$USER/.ssh:/root/.ssh
+      - ./config/php/docker-fpm.ini:/usr/local/php/conf.d/docker-fpm.ini
+      - ./config/php/docker-php-ext-xdebug.ini:/usr/local/php/conf.d/docker-php-ext-xdebug.ini
+      - ./src:/var/www/html
+
+  db:
+    image: mysql:lts
+    volumes:
+      - ./docker/mysql/data:/var/lib/mysql
+      - ./config/mysql:/etc/mysql/conf.d
+    ports:
+      - 33060:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+  web:
+    image: nginx
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - ./config/nginx/sites:/etc/nginx/sites
+      - ./config/nginx/certs:/etc/nginx/certs
+      - ./config/nginx/logs:/var/log/nginx
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./src:/var/www/html
+    ports:
+      - 80:80
+      - 443:443
+    workdir: /var/www/html

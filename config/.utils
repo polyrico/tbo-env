@@ -1,0 +1,3 @@
+function vpncc() {
+    sudo openvpn --config /home/kevinguzman/Documents/BitsAmericas/tbo-env/config/vpn/config.ovpn --auth-user-pass /home/kevinguzman/Documents/BitsAmericas/tbo-env/config/vpn/pass.txt
+}

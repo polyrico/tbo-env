@@ -1,0 +1,17 @@
+server {
+    listen 80;
+    server_name sites-example.local;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name sites-example.local;
+    root /var/www/html/v1/tbo_convergent;
+
+    access_log /var/log/nginx/access-sites-example.local.log;
+    error_log /var/log/nginx/error-sites-example.local.log;
+
+    include /etc/nginx/conf.d/ssl.conf;
+    include /etc/nginx/conf.d/drupal.conf;
+}
