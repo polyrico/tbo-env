@@ -17,6 +17,7 @@ services:
       - 3306:3306
     environment:
       MARIADB_ROOT_PASSWORD: secret
+      MARIADB_USER: kevinguzman
 
   web:
     image: nginx
