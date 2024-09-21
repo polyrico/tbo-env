@@ -25,9 +25,6 @@ RUN docker-php-ext-enable xdebug
 # Dependency manager
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Expose the ports
-EXPOSE 9000
-
 # Define the workdir
 WORKDIR /var/www
 
