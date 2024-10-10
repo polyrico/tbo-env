@@ -12,7 +12,7 @@ services:
       - host.docker.internal:host-gateway
 
   db:
-    image: mariadb
+    image: mysql
     restart: always
     volumes:
       - ./docker/mysql/data:/var/lib/mysql
@@ -21,7 +21,7 @@ services:
     ports:
       - 3306:3306
     environment:
-      MARIADB_ROOT_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: secret
 
   web:
     image: nginx
