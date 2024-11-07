@@ -11,6 +11,8 @@ services:
       - /home/$USER/.ssh:/root/.ssh
       - /home/$USER/.gitconfig:/root/.gitconfig
       - /home/$USER/.git-credentials:/root/.git-credentials
+      # AWS
+      - /home/$USER/.aws:/root/.aws
     extra_hosts:
       - host.docker.internal:host-gateway
 
